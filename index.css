@@ -1,0 +1,54 @@
+button, .button {
+    background-color: #9c9c9c;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button:hover, .button:hover {
+    background-color: #555;
+}
+
+.dialogue .dialogue-content {
+   display: none;
+}
+
+.dialogue .dialogue-button {
+    display: none;
+}
+
+.dialogue .dialogue-button:first-child {
+    display: block;
+}
+
+.dropdown-header{
+    cursor: pointer;
+}
+
+.dropdown-header::after {
+    content: "\25BC";
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.dropdown-header.active::after {
+    content: "\25B2";
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    padding: 10px;
+}
+
+.dropdown-content.active {
+    display: block;
+}
