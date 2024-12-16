@@ -34,3 +34,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+let x;
+let y;
+
+let xspeed;
+let yspeed;
+
+let dvd;
+
+
+let width = window.innerWidth;  
+let height = window.innerWidth > 600 ? window.innerHeight : 300;
+
+function preload() {
+  dvd = loadImage("/pictures/1.webp");
+}
+
+function setup() {
+  createCanvas(windowWidth, windowWidth > 600 ? windowHeight : 300);
+  x = random(width);
+  y = random(height);
+  xspeed = width > 600 ? 2 : 1;
+  yspeed = width > 600 ? 2 : 1;
+}
+
+function pickImage() {
+    //choose random number between 1 and 13
+    let num = Math.floor(Math.random() * 13) + 1;
+    dvd = loadImage(`/pictures/${num}.webp`);
+}
+
+function draw() {
+  background(0);
+
+  //set dvd witdth to be 180, height will be proportional
+  dvd.resize(180, 0);
+
+  image(dvd, x, y);
+
+
+  x = x + xspeed;
+  y = y + yspeed;
+
+  if (x + dvd.width >= width) {
+    xspeed = -xspeed;
+    x = width - dvd.width;
+    pickImage();
+  } else if (x <= 0) {
+    xspeed = -xspeed;
+    x = 0;
+    pickImage();
+  }
+
+  if (y + dvd.height >= height) {
+    yspeed = -yspeed;
+    y = height - dvd.height;
+    pickImage();
+  } else if (y <= 0) {
+    yspeed = -yspeed;
+    y = 0;
+    pickImage();
+
+  }
+
+  //set canvas size to window size, without recreating the canvas
+  if(width != windowWidth || (height != windowHeight && windowWidth >= 600)){
+    createCanvas(windowWidth, windowHeight);
+    width = windowWidth;
+    height = windowHeight;
+  }
+
+  if(width != windowWidth || (height != 300 && windowWidth < 600)){
+    createCanvas(windowWidth, 300);
+    width = windowWidth;
+    height = 300;
+  }
+}

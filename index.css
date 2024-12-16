@@ -6,14 +6,18 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   display: flex;
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 50px 10px;
+    flex-direction: column;
 }
 
-body+.image-bounce {
-  position: absolute;
+body canvas {
+  position: fixed;
     top: 0; 
     left: 0;
+    z-index: -1;
 }
 
 .page {
@@ -86,4 +90,17 @@ button:hover, .button:hover {
 
 .dropdown-content.active {
     display: block;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 10px;
+    }
+    body{
+        padding: 10px;
+        flex-direction: column-reverse;
+    }
+    body canvas{
+       position: relative;
+    }
 }
