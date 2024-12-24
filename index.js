@@ -59,10 +59,11 @@ function setup() {
   yspeed = width > 600 ? 2 : 1;
 }
 
+let current_image = 0;
 function pickImage() {
-    //choose random number between 1 and 13
-    let num = Math.floor(Math.random() * 13) + 1;
-    dvd = loadImage(`/pictures/${num}.webp`);
+
+    current_image = (current_image + 1) % 13;
+    dvd = loadImage(`/pictures/${current_image}.webp`);
 }
 
 function draw() {
